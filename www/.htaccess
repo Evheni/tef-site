@@ -1,0 +1,17 @@
+DirectoryIndex index index.php
+AddDefaultCharset utf-8
+DirectorySlash off
+
+RewriteEngine on
+RewriteBase /
+Options All -Indexes -MultiViews
+#RewriteCond %(REQUEST_FILENAME) -s [OR]
+#RewriteCond %(REQUEST_FILENAME) -l [OR]
+#RewriteCond %(REQUEST_FILENAME) -d
+#RewriteRule ^.*$ [NC,L]
+#RewriteRule ^.*$ index.php [NC,l]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
